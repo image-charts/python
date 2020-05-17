@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setup(
   name='image-charts',
-  version = "5.0.0",
+  version="5.0.0",
   py_modules=['ImageCharts'],
   url='https://github.com/FGRibreau/mailchecker',
   license='MIT',

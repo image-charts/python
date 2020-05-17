@@ -108,32 +108,32 @@ opt = {
     #
     # Request timeout (in millisecond) when calling to_binary() or to_data_uri()
     #
-    timeout: 5000,
+    'timeout': 5000,
 
     #
     # (Enterprise and Enterprise+ subscription only) SECRET_KEY
     #
-    secret: null,
+    'secret': null,
 
     #
     # (Enterprise, Enterprise+ and On-Premise subscription only) custom domain
     #
-    host: 'image-charts.com',
+    'host': 'image-charts.com',
 
     #
     # (On-Premise subscription only) custom protocol
     #
-    protocol: 'https',
+    'protocol': 'https',
 
     #
     # (On-Premise subscription only) custom port
     #
-    port: 443,
+    'port': 443,
 
     #
     # (On-Premise subscription only) custom pathname
     #
-    pathname: '/chart'
+    'pathname': '/chart'
 }
 ```
 
