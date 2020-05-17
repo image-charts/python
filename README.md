@@ -1,11 +1,13 @@
 ## Official [image-charts](https://image-charts.com/) Python library
 
-[![NPM VERSION](http://img.shields.io/npm/v/image-charts.svg?style=flat)](https://www.npmjs.org/package/image-charts)
-[![maintainability](https://api.codeclimate.com/v1/badges/8ae1208964cbea39150a/maintainability)](https://codeclimate.com/github/image-charts/javascript/maintainability)
+[![NPM VERSION](http://img.shields.io/pypi/v/image-charts.svg?style=flat)](https://pypi.org/project/image-charts)
+
+<!-- [![maintainability](https://api.codeclimate.com/v1/badges/8ae1208964cbea39150a/maintainability)](https://codeclimate.com/github/image-charts/javascript/maintainability)
 [![test coverage](https://api.codeclimate.com/v1/badges/8ae1208964cbea39150a/test_coverage)](https://codeclimate.com/github/image-charts/javascript/test_coverage)
 
 [![DEPENDENCY STATUS](http://img.shields.io/david/image-charts/javascript.svg?style=flat)](https://david-dm.org/image-charts/javascript)
 [![DEVDEPENDENCY STATUS](http://img.shields.io/david/dev/image-charts/javascript.svg?style=flat)](https://david-dm.org/image-charts/javascript#info=devDependencies)
+-->
 
 Official [Image Charts](https://image-charts.com/) API client.
 Generate URLs of static image charts.
