@@ -9,7 +9,7 @@ setup(
   name='image-charts',
   version="5.0.0",
   py_modules=['ImageCharts'],
-  url='https://github.com/FGRibreau/mailchecker',
+  url='https://github.com/image-charts/python',
   license='MIT',
   author='Francois-Guillaume Ribreau',
   author_email='github@fgribreau.com',
