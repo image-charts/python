@@ -62,7 +62,7 @@ Embed them everywhere in emails, pdf reports, chat bots...!
 ### Usage
 
 ```js
-from 'image-charts' import ImageCharts
+from ImageCharts import ImageCharts
 
 pie = ImageCharts().cht('p').chd('a:2.5,5,8.3').chs('100x100')
 
@@ -154,7 +154,7 @@ opt = {
 ##### Usage
 
 ```python3
-from 'image-charts' import ImageCharts
+from ImageCharts import ImageCharts
 
 chart_url = ImageCharts()
 .cht('bvg') # vertical bar chart
@@ -173,12 +173,12 @@ print(chart_url) # https://image-charts.com/chart?cht=bvg&chs=300x300&chd=a%3A60
 <a name="to_binary"></a>
 #### `to_binary()` : [`Buffer`](https://docs.python.org/3/c-api/buffer.html)
 
-> Do a request to Image-Charts API with current configuration and yield a binary
+> Do a request to Image-Charts API with current configuration and yield image data as bytes
 
 ##### Usage
 
 ```python3
-from 'image-charts' import ImageCharts
+from ImageCharts import ImageCharts
 
 chart_url = ImageCharts()
 .cht('bvg') # vertical bar chart
@@ -203,7 +203,7 @@ print(chart_url) # b'\x89PNG\r\n\x1a\n\x00\x00...
 ##### Usage
 
 ```python3
-from 'image-charts' import ImageCharts
+from ImageCharts import ImageCharts
 
 chart_url = ImageCharts()
 .cht('bvg') # vertical bar chart
@@ -233,7 +233,7 @@ These two parameters are mandatory to sign your request and remove the watermark
 Replace both values in the code example below:
 
 ```python3
-from 'image-charts' import ImageCharts
+from ImageCharts import ImageCharts
 
 chart_url = ImageCharts({'secret': 'SECRET_KEY'})
                   .icac('ACCOUNT_ID')
@@ -262,7 +262,7 @@ Image-Charts virtual appliance can be deployed anywhere inside a customer networ
 
 
 ```python3
-from 'image-charts' import ImageCharts
+from ImageCharts import ImageCharts
 
 chart_url = ImageCharts({
         'secret': 'SECRET_KEY',
