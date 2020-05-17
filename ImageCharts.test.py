@@ -48,7 +48,8 @@ class TestImageCharts(unittest.TestCase):
         ImageCharts({'timeout' : 0.01}).cht('p').chd('t:1,2,3').chs('100x100').chan('1200').to_binary()
 
     def test__to_binary_works(self):
-      self.assertEqual(len(ImageCharts().cht('p').chd('t:1,2,3').chs('2x2').to_binary()), 69)
+      size = len(ImageCharts().cht('p').chd('t:1,2,3').chs('2x2').to_binary())
+      self.assertTrue(size > 60, '{sz} > 60'.format(sz=size))
 
     def test__forwards_package_name_version_as_user_agent(self):
         chart = ImageCharts().cht('p').chd('t:1,2,3').chs('10x10')

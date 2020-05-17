@@ -3,5 +3,9 @@ coverage
 *.log
 get-pip.py
 pyvenv.cfg
-site-packages
+site-packages/
 env
+build/
+dist/
+*.egg-info
+
