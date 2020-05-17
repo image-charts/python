@@ -1,0 +1,7 @@
+coverage
+.env
+*.log
+get-pip.py
+pyvenv.cfg
+site-packages
+env
