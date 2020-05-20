@@ -75,6 +75,15 @@ class TestImageCharts(unittest.TestCase):
     def test__to_data_uri_works(self):
         self.assertEqual(ImageCharts().cht('p').chd('t:1,2,3').chs('2x2').to_data_uri()[:30], 'data:image/png;base64,iVBORw0K')
 
+    def test__to_file_throw_exception_if_bad_path(self):
+      with self.assertRaisesRegex(Exception, """No such file or directory"""):
+        ImageCharts().cht('p').chd('t:1,2,3').chs('2x2').to_file('/tmp_oiqsjosijd/chart.png')
+
+    def test__to_file_works(self):
+      ImageCharts().cht('p').chd('t:1,2,3').chs('2x2').to_file('/tmp/chart.png')
+      with open('/tmp/chart.png', 'rb') as f:
+        f.close()
+
     def test__support_gif(self):
         self.assertEqual(ImageCharts().cht('p').chd('t:1,2,3').chan('100').chs('2x2').to_data_uri()[:30], 'data:image/gif;base64,R0lGODlh')
 

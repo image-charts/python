@@ -13,18 +13,16 @@ Official [Image Charts](https://image-charts.com/) API client.
 Generate URLs of static image charts.
 Embed them everywhere in emails, pdf reports, chat bots...!
 
-### Table of Contents
-
-- __[Usage](#usage)__
-- __[Install](#install)__
+- __[Getting started](#getting-started)__
 - __[Enterprise support](#enterprise-support)__
 - __[On-Premise support](#on-premise-support)__
 - __[Constructor](#constructor)__
-   - __[Options](#options)__
+    - __[Options](#options)__
 - __[Methods](#methods)__
-   - __[to_url()](#to_url)__
-   - __[to_binary()](#to_binary)__
-   - __[to_data_uri()](#to_data_uri)__
+    - __[to_url()](#to_url)__
+    - __[to_file()](#to_file)__
+    - __[to_buffer()](#to_buffer)__
+    - __[to_data_uri()](#to_data_uri)__
    - __[cht(value) - Chart type](#cht)__
    - __[chd(value) - chart data](#chd)__
    - __[chds(value) - data format with custom scaling](#chds)__
@@ -59,14 +57,27 @@ Embed them everywhere in emails, pdf reports, chat bots...!
 
 -----------------------------------------------------------------------
 
-### Usage
+### Getting started
 
-```js
+#### 1. Install Image-Charts [Python Package](https://pypi.org/project/image-charts/)
+
+```bash
+pip install image-charts
+```
+
+#### 2. Import Image-Charts library
+
+```python3
 from ImageCharts import ImageCharts
+```
 
+#### 3. Generate a chart image
+
+```python
 pie = ImageCharts().cht('p').chd('a:2.5,5,8.3').chs('100x100')
 
 pie.to_url()) # https://image-charts.com/chart?chd=a%3A2.5%2C5%2C8.3&chs=600x300&cht=p
+pie.to_file('/path/to/chart.png'); #
 pie.to_data_uri() # data:image/png;base64,iVBORw0KGgo...
 pie.to_binary() # b'\x89PNG\r\n\x1a\n\x00\x00...
 ```
@@ -76,18 +87,6 @@ pie.to_binary() # b'\x89PNG\r\n\x1a\n\x00\x00...
         <img src="https://image-charts.com/chart?cht=bvs&chd=s:theresadifferencebetweenknowingthepathandwalkingthepath&chs=700x200&chxt=y&chf=b0,lg,90,4CA4F5,0.1,C371D3,0.8,EA469E,1" />
     </a>
 </p>
-
------------------------------------------------------------------------
-
-### Install
-
-```bash
-pip install image-charts
-```
-
-```python3
-from ImageCharts import ImageCharts
-```
 
 ----------------------------------------------------------------------------------------------
 
@@ -156,13 +155,39 @@ opt = {
 ```python3
 from ImageCharts import ImageCharts
 
-chart_url = ImageCharts()
-.cht('bvg') # vertical bar chart
-.chs('300x300') # 300px x 300px
-.chd('a:60,40') # 2 data points: 60 and 40
-.to_url() # get the generated URL
+# vertical bar chart
+# 300px x 300px
+# 2 data points: 60 and 40
+# get the generated URL
+chart_url = ImageCharts().cht('bvg') .chs('300x300') .chd('a:60,40') .to_url()
 
 print(chart_url) # https://image-charts.com/chart?cht=bvg&chs=300x300&chd=a%3A60%2C40
+
+```
+
+- _[Back to usage](#usage)_
+- _[Back to ToC](#table-of-contents)_
+
+----------------------------------------------------------------------------------------------
+
+<a name="to_file"></a>
+#### `to_file()` : `String`
+
+> Creates a file containing generated chart image (blocking)
+
+##### Usage
+
+```python3
+from ImageCharts import ImageCharts
+
+# genertates a
+# vertical bar chart (cht=bvg)
+# of 300px x 300px (chs=300x300)
+# with 2 data points: 60 and 40 (chd=a:60,40)
+# and write it to /tmp/chart.png
+
+ImageCharts().cht('bvg').chs('300x300').chd('a:60,40').to_file('/tmp/awesome_chart.png')
+
 ```
 
 - _[Back to usage](#usage)_
@@ -180,13 +205,14 @@ print(chart_url) # https://image-charts.com/chart?cht=bvg&chs=300x300&chd=a%3A60
 ```python3
 from ImageCharts import ImageCharts
 
-chart_url = ImageCharts()
-.cht('bvg') # vertical bar chart
-.chs('300x300') # 300px x 300px
-.chd('a:60,40') # 2 data points: 60 and 40
-.to_binary() # download chart image
+# vertical bar chart
+# 300px x 300px
+# 2 data points: 60 and 40
+# download chart image
 
+chart_url = ImageCharts().cht('bvg').chs('300x300').chd('a:60,40').to_binary()
 print(chart_url) # b'\x89PNG\r\n\x1a\n\x00\x00...
+
 ```
 
 - _[Back to usage](#usage)_
@@ -205,13 +231,15 @@ print(chart_url) # b'\x89PNG\r\n\x1a\n\x00\x00...
 ```python3
 from ImageCharts import ImageCharts
 
-chart_url = ImageCharts()
-.cht('bvg') # vertical bar chart
-.chs('300x300') # 300px x 300px
-.chd('a:60,40') # 2 data points: 60 and 40
-.to_data_uri() # download chart image and generate a data URI string
+# vertical bar chart
+# 300px x 300px
+# 2 data points: 60 and 40
+# download chart image and generate a data URI string
+
+chart_url = ImageCharts().cht('bvg').chs('300x300').chd('a:60,40').to_data_uri()
 
 print(chart_url) # "data:image/png;base64,iVBORw0KGgo...
+
 ```
 
 - _[Back to usage](#usage)_
@@ -235,18 +263,19 @@ Replace both values in the code example below:
 ```python3
 from ImageCharts import ImageCharts
 
-chart_url = ImageCharts({'secret': 'SECRET_KEY'})
-                  .icac('ACCOUNT_ID')
-                  .cht('p3') # pie chart
-                  .chs('700x190') # 700px x 190px
-                  .chd('t:60,40') # 2 data points: 60 and 40
-                  .chl('Hello|World') # 1 label per pie slice : "Hello" and "World"
-                  .chf('ps0-0,lg,45,ffeb3b,0.2,f44336,1|ps0-1,lg,45,8bc34a,0.2,009688,1') # 1 gradient per pie slice
-                  .icretina('1') # enable paid-only features like high-resolution charts
-                  .to_url() # get the whole (HMAC signed) URL
+# pie chart
+# 700px x 190px
+# 2 data points: 60 and 40
+# 1 label per pie slice : "Hello" and "World"
+# 1 gradient per pie slice
+# enable paid-only features like high-resolution charts
+# get the whole (HMAC signed) URL
+
+chart_url = ImageCharts({'secret': 'SECRET_KEY'}).icac('ACCOUNT_ID').cht('p3').chs('700x190').chd('t:60,40').chl('Hello|World').chf('ps0-0,lg,45,ffeb3b,0.2,f44336,1|ps0-1,lg,45,8bc34a,0.2,009688,1').icretina('1').to_url()
 
 print(chart_url)
 # https://image-charts.com/chart?chd=t%3A60%2C40&chf=ps0-0%2Clg%2C45%2Cffeb3b%2C0.2%2Cf44336%2C1%7Cps0-1%2Clg%2C45%2C8bc34a%2C0.2%2C009688%2C1&chl=Hello%7CWorld&chs=700x190&cht=p3&icac=fgribreau&icretina=1&ichm=652f09953663bce161ac612af5f310f5abf7151b55337ef2a97e5e1cd559c8fb
+
 ```
 
 <p align="center"><img src="https://image-charts.com/chart?chd=t%3A60%2C40&chf=ps0-0%2Clg%2C45%2Cffeb3b%2C0.2%2Cf44336%2C1%7Cps0-1%2Clg%2C45%2C8bc34a%2C0.2%2C009688%2C1&chl=Hello%7CWorld&chs=700x190&cht=p3&icac=fgribreau&icretina=1&ichm=652f09953663bce161ac612af5f310f5abf7151b55337ef2a97e5e1cd559c8fb"/></p>

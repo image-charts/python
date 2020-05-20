@@ -502,7 +502,7 @@ class ImageCharts:
     return url
 
   def to_binary(self):
-    """Do a blocking request to Image-Charts API with current configuration and yield the content of the image as bytes"""
+    """Yield the content of the chart image as bytes (blocking)"""
 
     self.request_headers = {'user-agent': 'python-image-charts/latest' + (' ({icac})'.format(icac=self.query['icac']) if 'icac' in self.query and len(self.query['icac']) > 0 else '')}
     response = requests.get(self.to_url(), timeout=self.timeout, headers=self.request_headers)
@@ -531,3 +531,10 @@ class ImageCharts:
     mimetype = 'image/gif' if 'chan' in self.query else 'image/png'
     encoded = b64encode(self.to_binary()).decode("utf-8")
     return 'data:{mimetype};{encoding},{encoded}'.format(mimetype=mimetype, encoding=encoding, encoded=encoded)
+
+  def to_file(self, path) -> str:
+    """Do a blocking request to Image-Charts API with current configuration and a base64 encoded data URI (blocking)
+
+    """
+    with open(path, 'wb') as f:
+      f.write(self.to_binary())
