@@ -486,6 +486,32 @@ class ImageCharts:
     return self.__clone('icretina', value)
 
   
+  def icqrb(self, value: str):
+    """Background color for QR Codes
+
+    [Reference documentation]{@link https://documentation.image-charts.com/qr-codes/#background-color}
+    * @example
+  * const chart = ImageCharts().{param.name}('{doc(example)}')
+    @default '{param.default}'
+
+    - value :str - Background color for QR Codes
+    """
+    return self.__clone('icqrb', value)
+
+  
+  def icqrf(self, value: str):
+    """Foreground color for QR Codes
+
+    [Reference documentation]{@link https://documentation.image-charts.com/qr-codes/#foreground-color}
+    * @example
+  * const chart = ImageCharts().{param.name}('{doc(example)}')
+    @default '{param.default}'
+
+    - value :str - Foreground color for QR Codes
+    """
+    return self.__clone('icqrf', value)
+
+  
 
   def to_url(self) -> str:
     """Get the full Image-Charts API url (signed and encoded if necessary)"""

@@ -26,7 +26,8 @@ class TestImageCharts(unittest.TestCase):
       def call_method(chart, method):
           return getattr(chart, method)("plop")
       methods = [method for method in dir(ImageCharts()) if method.startswith('c') or method.startswith('ic')]
-      self.assertEqual(reduce(call_method, methods, chart).to_url(), 'https://image-charts.com:443/chart?chan=plop&chco=plop&chd=plop&chdl=plop&chdlp=plop&chdls=plop&chds=plop&chf=plop&chg=plop&chl=plop&chld=plop&chli=plop&chls=plop&chm=plop&chma=plop&choe=plop&chof=plop&chs=plop&cht=plop&chts=plop&chtt=plop&chxl=plop&chxr=plop&chxs=plop&chxt=plop&icac=plop&icff=plop&icfs=plop&ichm=plop&iclocale=plop&icretina=plop')
+      query = "&".join([method + '=plop' for method in methods])
+      self.assertEqual(reduce(call_method, methods, chart).to_url(), 'https://image-charts.com:443/chart?' + query)
 
     def test__adds_a_signature_when_icac_and_secrets_are_defined(self):
         self.assertEqual(
