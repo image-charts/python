@@ -1,4 +1,4 @@
-## Official [image-charts](https://image-charts.com/) Python library
+[![image charts python library logo](./logo.jpg)](#getting-started)
 
 [![Pypi VERSION](http://img.shields.io/pypi/v/image-charts.svg?style=flat)](https://pypi.org/project/image-charts)
 
@@ -12,8 +12,6 @@
 Official [Image Charts](https://image-charts.com/) API client.
 Generate URLs of static image charts.
 Embed them everywhere in emails, pdf reports, chat bots...!
-
-[![image charts python library logo](./logo.jpg)](#getting-started)
 
 ### Getting started
 
