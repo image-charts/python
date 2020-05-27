@@ -3,8 +3,8 @@
 [![Pypi VERSION](http://img.shields.io/pypi/v/image-charts.svg?style=flat)](https://pypi.org/project/image-charts)
 
 ![Libraries.io dependency status for GitHub repo](https://img.shields.io/librariesio/github/image-charts/python)
-![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/image-charts/python)
-![Code Climate issues](https://img.shields.io/codeclimate/issues/image-charts/python)
+![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/image-charts/python)
+
 
 
 Official [Image Charts](https://image-charts.com/) API client.
