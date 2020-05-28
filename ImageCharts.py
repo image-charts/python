@@ -132,14 +132,17 @@ class ImageCharts:
 
   
   def chof(self, value: str):
-    """Some clients like Flowdock/Facebook messenger and so on, needs an URL to ends with a valid image extension file to display the image, use this parameter at the end your URL to support them. Valid values are &#34;.png&#34; and &#34;.gif&#34;
+    """Some clients like Flowdock/Facebook messenger and so on, needs an URL to ends with a valid image extension file to display the image, use this parameter at the end your URL to support them. Valid values are &#34;.png&#34;, &#34;.svg&#34; and &#34;.gif&#34;. 
+	*           Only QRCodes and GraphViz support svg output.
 
     [Reference documentation]{@link https://documentation.image-charts.com/reference/output-format/}
     * @example
   * const chart = ImageCharts().{param.name}('{doc(example)}')
+  * const chart = ImageCharts().{param.name}('{doc(example)}')
+  * const chart = ImageCharts().{param.name}('{doc(example)}')
     @default '{param.default}'
 
-    - value :str - Output fake format
+    - value :str - Image output format
     """
     return self.__clone('chof', value)
 
