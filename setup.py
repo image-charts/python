@@ -16,7 +16,7 @@ setup(
   description='Official Image-Charts.com API client library',
   long_description=long_description,
   long_description_content_type="text/markdown",
-  install_requires=["request>=2.22"],
+  install_requires=["requests>=2.24"],
   python_requires='>=3.6',
   classifiers=[
     'License :: OSI Approved :: MIT License',
