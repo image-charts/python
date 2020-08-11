@@ -379,6 +379,20 @@ class ImageCharts:
     return self.__clone('chf', value)
 
   
+  def chbr(self, value: str):
+    """Bar corner radius. Display bars with rounded corner.
+
+    [Reference documentation]{@link https://documentation.image-charts.com/bar-charts/#rounded-bar}
+    * @example
+  * const chart = ImageCharts().{param.name}('{doc(example)}')
+  * const chart = ImageCharts().{param.name}('{doc(example)}')
+    
+
+    - value :str - Bar corner radius. Display bars with rounded corner.
+    """
+    return self.__clone('chbr', value)
+
+  
   def chan(self, value: str):
     """gif configuration
 
