@@ -339,6 +339,20 @@ class ImageCharts:
     return self.__clone('chl', value)
 
   
+  def chlps(self, value: str):
+    """Position and style of labels on data
+
+    [Reference documentation]{@link https://documentation.image-charts.com/reference/chart-label/}
+    * @example
+  * const chart = ImageCharts().{param.name}('{doc(example)}')
+  * const chart = ImageCharts().{param.name}('{doc(example)}')
+    
+
+    - value :str - Position and style of labels on data
+    """
+    return self.__clone('chlps', value)
+
+  
   def chma(self, value: str):
     """chart margins
 
