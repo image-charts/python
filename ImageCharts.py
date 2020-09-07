@@ -193,6 +193,8 @@ class ImageCharts:
     * @example
   * const chart = ImageCharts().{param.name}('{doc(example)}')
   * const chart = ImageCharts().{param.name}('{doc(example)}')
+  * const chart = ImageCharts().{param.name}('{doc(example)}')
+  * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
     - value :str - Solid or dotted grid lines
