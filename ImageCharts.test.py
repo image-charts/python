@@ -41,7 +41,7 @@ class TestImageCharts(unittest.TestCase):
 
 
     def test__rejects_if_a_icac_is_defined_without_ichm(self):
-      with self.assertRaisesRegex(Exception, 'IC_MISSING_ENT_PARAMETER'):
+      with self.assertRaisesRegex(Exception, 'HMAC-SHA256 request signature'):
         ImageCharts().cht('p').chd('t:1,2,3').chs('100x100').icac('test_fixture').to_binary()
 
     def test__rejects_if_timeout_is_reached(self):
@@ -66,7 +66,7 @@ class TestImageCharts(unittest.TestCase):
         self.assertEqual(chart.request_headers['user-agent'], 'python-image-charts/latest (MY_ACCOUNT_ID)')
 
     def test__throw_error_if_account_not_found(self):
-        with self.assertRaisesRegex(Exception, 'IC_ACCOUNT_ID_NOT_FOUND'):
+        with self.assertRaisesRegex(Exception, 'ACCOUND_ID not found, you must be an Image-Charts subscriber'):
           ImageCharts({'secret' : 'plop'}).cht('p').chd('t:1,2,3').chs('10x10').icac('MY_ACCOUNT_ID').to_binary()
 
     def test__rejects_if_there_was_an_error(self):
