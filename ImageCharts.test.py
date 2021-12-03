@@ -66,8 +66,8 @@ class TestImageCharts(unittest.TestCase):
         self.assertEqual(chart.request_headers['user-agent'], 'python-image-charts/latest (MY_ACCOUNT_ID)')
 
     def test__throw_error_if_account_not_found(self):
-        with self.assertRaisesRegex(Exception, 'ACCOUND_ID not found, you must be an Image-Charts subscriber'):
-          ImageCharts({'secret' : 'plop'}).cht('p').chd('t:1,2,3').chs('10x10').icac('MY_ACCOUNT_ID').to_binary()
+      with self.assertRaisesRegex(Exception, """you must be an Image-Charts subscriber"""):
+        ImageCharts({'secret' : 'plop'}).cht('p').chd('t:1,2,3').chs('10x10').icac('MY_ACCOUNT_ID').to_binary()
 
     def test__rejects_if_there_was_an_error(self):
       with self.assertRaisesRegex(Exception, """"chs" is required"""):
