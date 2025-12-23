@@ -571,13 +571,16 @@ class ImageCharts:
     if response.status_code >= 200 and response.status_code < 300:
       return response.content
 
-    if 'x-ic-error-validation' not in self.response_headers or len(self.response_headers['x-ic-error-validation']) == 0:
-        raise Exception(self.response_headers['x-ic-error-code'])
+    error_code = self.response_headers.get('x-ic-error-code', 'HTTP_{}'.format(response.status_code))
+    validation_message_raw = self.response_headers.get('x-ic-error-validation', '')
 
-    validation_message = json.loads(self.response_headers['x-ic-error-validation'])
+    if not validation_message_raw or len(validation_message_raw) == 0:
+        raise Exception(error_code)
+
+    validation_message = json.loads(validation_message_raw)
 
     if not validation_message or len(validation_message) < 1:
-      raise Exception(self.response_headers['x-ic-error-code'])
+      raise Exception(error_code)
 
     raise Exception(validation_message[0]['message'])
 
