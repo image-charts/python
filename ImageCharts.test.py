@@ -5,6 +5,7 @@
 from __future__ import print_function
 import os, sys
 import unittest
+import time
 
 sys.path.insert(0, '.')
 # Run tests from the repository root directory:
@@ -13,6 +14,10 @@ sys.path.insert(0, '.')
 from ImageCharts import ImageCharts
 
 class TestImageCharts(unittest.TestCase):
+    def setUp(self):
+        # Add 500ms delay between tests to avoid 429 rate limiting
+        time.sleep(0.5)
+
     def test__CanInstance(self):
       self.assertTrue(isinstance(ImageCharts(), ImageCharts))
 
