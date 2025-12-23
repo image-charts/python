@@ -15,8 +15,8 @@ from ImageCharts import ImageCharts
 
 class TestImageCharts(unittest.TestCase):
     def setUp(self):
-        # Add 1000ms delay between tests to avoid 429 rate limiting
-        time.sleep(1.0)
+        # Add 3000ms delay between tests to avoid 429 rate limiting
+        time.sleep(3.0)
 
     def test__CanInstance(self):
       self.assertTrue(isinstance(ImageCharts(), ImageCharts))
