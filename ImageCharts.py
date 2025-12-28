@@ -24,6 +24,7 @@ class ImageCharts:
     self.pathname = options['pathname']  if 'pathname' in options else '/chart'
     self.timeout = options['timeout']  if 'timeout' in options else 5000
     self.secret = options['secret']  if 'secret' in options else None
+    self.user_agent = options['user_agent'] if 'user_agent' in options else None
     self.query = previous
     self.request_headers = {}
     self.response_headers = {}
@@ -37,7 +38,8 @@ class ImageCharts:
       'port' : self.port,
       'pathname' : self.pathname,
       'timeout' : self.timeout,
-      'secret' : self.secret
+      'secret' : self.secret,
+      'user_agent' : self.user_agent
     }, {**self.query, **add})
 
 
@@ -563,7 +565,8 @@ class ImageCharts:
   def to_binary(self):
     """Yield the content of the chart image as bytes (blocking)"""
 
-    self.request_headers = {'user-agent': 'python-image-charts/latest' + (' ({icac})'.format(icac=self.query['icac']) if 'icac' in self.query and len(self.query['icac']) > 0 else '')}
+    default_user_agent = 'python-image-charts/latest' + (' ({icac})'.format(icac=self.query['icac']) if 'icac' in self.query and len(self.query['icac']) > 0 else '')
+    self.request_headers = {'user-agent': self.user_agent if self.user_agent else default_user_agent}
     response = requests.get(self.to_url(), timeout=self.timeout, headers=self.request_headers)
 
     self.response_headers = response.headers;

@@ -13,6 +13,17 @@ sys.path.insert(0, '.')
 
 from ImageCharts import ImageCharts
 
+# CI user-agent to bypass rate limiting (set in CI environment)
+CI_USER_AGENT = os.environ.get('IMAGE_CHARTS_USER_AGENT')
+
+def create_image_charts(opts=None):
+    """Helper to create ImageCharts with CI user-agent if set"""
+    if opts is None:
+        opts = {}
+    if CI_USER_AGENT:
+        opts['user_agent'] = CI_USER_AGENT
+    return ImageCharts(opts)
+
 class TestImageCharts(unittest.TestCase):
     def setUp(self):
         # Add 3000ms delay between tests to avoid 429 rate limiting
@@ -42,19 +53,19 @@ class TestImageCharts(unittest.TestCase):
 
     def test__rejects_if_a_chs_is_not_defined(self):
         with self.assertRaisesRegex(Exception, """"chs" is required"""):
-          ImageCharts().cht('p').chd('t:1,2,3').to_binary()
+          create_image_charts().cht('p').chd('t:1,2,3').to_binary()
 
 
     def test__rejects_if_a_icac_is_defined_without_ichm(self):
       with self.assertRaisesRegex(Exception, 'HMAC-SHA256 request signature'):
-        ImageCharts().cht('p').chd('t:1,2,3').chs('100x100').icac('test_fixture').to_binary()
+        create_image_charts().cht('p').chd('t:1,2,3').chs('100x100').icac('test_fixture').to_binary()
 
     def test__rejects_if_timeout_is_reached(self):
       with self.assertRaisesRegex(Exception, 'timed out'):
         ImageCharts({'timeout' : 0.01}).cht('p').chd('t:1,2,3').chs('100x100').chan('1200').to_binary()
 
     def test__to_binary_works(self):
-      size = len(ImageCharts().cht('p').chd('t:1,2,3').chs('2x2').to_binary())
+      size = len(create_image_charts().cht('p').chd('t:1,2,3').chs('2x2').to_binary())
       self.assertTrue(size > 60, '{sz} > 60'.format(sz=size))
 
     def test__forwards_package_name_version_as_user_agent(self):
@@ -76,22 +87,22 @@ class TestImageCharts(unittest.TestCase):
 
     def test__rejects_if_there_was_an_error(self):
       with self.assertRaisesRegex(Exception, """"chs" is required"""):
-        ImageCharts().cht('p').chd('t:1,2,3').to_data_uri()
+        create_image_charts().cht('p').chd('t:1,2,3').to_data_uri()
 
     def test__to_data_uri_works(self):
-        self.assertEqual(ImageCharts().cht('p').chd('t:1,2,3').chs('2x2').to_data_uri()[:30], 'data:image/png;base64,iVBORw0K')
+        self.assertEqual(create_image_charts().cht('p').chd('t:1,2,3').chs('2x2').to_data_uri()[:30], 'data:image/png;base64,iVBORw0K')
 
     def test__to_file_throw_exception_if_bad_path(self):
       with self.assertRaisesRegex(Exception, """No such file or directory"""):
-        ImageCharts().cht('p').chd('t:1,2,3').chs('2x2').to_file('/tmp_oiqsjosijd/chart.png')
+        create_image_charts().cht('p').chd('t:1,2,3').chs('2x2').to_file('/tmp_oiqsjosijd/chart.png')
 
     def test__to_file_works(self):
-      ImageCharts().cht('p').chd('t:1,2,3').chs('2x2').to_file('/tmp/chart.png')
+      create_image_charts().cht('p').chd('t:1,2,3').chs('2x2').to_file('/tmp/chart.png')
       with open('/tmp/chart.png', 'rb') as f:
         f.close()
 
     def test__support_gif(self):
-        self.assertEqual(ImageCharts().cht('p').chd('t:1,2,3').chan('100').chs('2x2').to_data_uri()[:30], 'data:image/gif;base64,R0lGODlh')
+        self.assertEqual(create_image_charts().cht('p').chd('t:1,2,3').chan('100').chs('2x2').to_data_uri()[:30], 'data:image/gif;base64,R0lGODlh')
 
     def test__expose_the_protocol(self):
         self.assertEqual(ImageCharts().protocol, 'https')
