@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setup(
   name='image-charts',
-  version="6.1.45",
+  version="6.1.46",
   py_modules=['ImageCharts'],
   url='https://github.com/image-charts/python',
   license='MIT',
