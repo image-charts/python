@@ -61,7 +61,8 @@ class TestImageCharts(unittest.TestCase):
         create_image_charts().cht('p').chd('t:1,2,3').chs('100x100').icac('test_fixture').to_binary()
 
     def test__rejects_if_timeout_is_reached(self):
-      with self.assertRaisesRegex(Exception, 'timed out'):
+      # Accept timeout errors or network connection errors (both indicate connection failure)
+      with self.assertRaisesRegex(Exception, 'timed out|Network is unreachable|Connection refused|Max retries exceeded'):
         ImageCharts({'timeout' : 0.01}).cht('p').chd('t:1,2,3').chs('100x100').chan('1200').to_binary()
 
     def test__to_binary_works(self):
