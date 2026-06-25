@@ -9,7 +9,4 @@ build/
 dist/
 *.egg-info
 __pycache__
-node_modules/
-out/
-solution-src/
-*.tsbuildinfo
+.DS_Store
