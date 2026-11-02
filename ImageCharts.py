@@ -61,7 +61,7 @@ class ImageCharts:
 
   
   def chd(self, value: str):
-    """chart data
+    """chart data. At most 1,000 series, chm line markers included, and 10,080 points in total.
 
     [Reference documentation]{@link https://documentation.image-charts.com/reference/data-format/}
     * @example
@@ -71,7 +71,7 @@ class ImageCharts:
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
-    - value :str - chart data
+    - value :str - chart data. At most 1,000 series, chm line markers included, and 10,080 points in total.
     """
     return self.__clone('chd', value)
 
@@ -170,7 +170,7 @@ class ImageCharts:
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
-    - value :str - Text for each series, to display in the legend
+    - value :str - Text for each series, to display in the legend. Each text between pipes holds at most 10,000 characters. The texts of chtt, chdl, chl and chxl hold at most 10,000 characters together that are not printable ASCII: accented letters, other scripts, emoji and line breaks.
     """
     return self.__clone('chdl', value)
 
@@ -189,7 +189,7 @@ class ImageCharts:
 
   
   def chg(self, value: str):
-    """Solid or dotted grid lines
+    """Solid or dotted grid lines. A dashed grid needs at least 1 pixel per dash or space on average.
 
     [Reference documentation]{@link https://documentation.image-charts.com/reference/grid-lines/}
     * @example
@@ -199,7 +199,7 @@ class ImageCharts:
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
-    - value :str - Solid or dotted grid lines
+    - value :str - Solid or dotted grid lines. A dashed grid needs at least 1 pixel per dash or space on average.
     """
     return self.__clone('chg', value)
 
@@ -224,14 +224,14 @@ class ImageCharts:
 
   
   def chtt(self, value: str):
-    """chart title
+    """chart title. Each text between pipes holds at most 10,000 characters. The texts of chtt, chdl, chl and chxl hold at most 10,000 characters together that are not printable ASCII: accented letters, other scripts, emoji and line breaks.
 
     [Reference documentation]{@link https://documentation.image-charts.com/reference/chart-title/}
     * @example
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
-    - value :str - chart title
+    - value :str - chart title. Each text between pipes holds at most 10,000 characters. The texts of chtt, chdl, chl and chxl hold at most 10,000 characters together that are not printable ASCII: accented letters, other scripts, emoji and line breaks.
     """
     return self.__clone('chtt', value)
 
@@ -260,7 +260,7 @@ class ImageCharts:
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
-    - value :str - Display values on your axis lines or change which axes are shown
+    - value :str - Display values on your axis lines or change which axes are shown. At most 100 axes.
     """
     return self.__clone('chxt', value)
 
@@ -274,7 +274,7 @@ class ImageCharts:
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
-    - value :str - Custom string axis labels on any axis
+    - value :str - Custom string axis labels on any axis. Each text between pipes holds at most 10,000 characters. The texts of chtt, chdl, chl and chxl hold at most 10,000 characters together that are not printable ASCII: accented letters, other scripts, emoji and line breaks.
     """
     return self.__clone('chxl', value)
 
@@ -292,7 +292,7 @@ class ImageCharts:
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
-    - value :str - Font size, color for axis labels, both custom labels and default label values
+    - value :str - Font size, color for axis labels, both custom labels and default label values. At most 100 styles, one per axis. Each number format after N holds at most 10,000 characters. An axis draws its format at each tick: at most 60,000 characters over all axes. A character in a font larger than 14 pixels counts once per 14 pixels of font size.
     """
     return self.__clone('chxs', value)
 
@@ -310,13 +310,13 @@ class ImageCharts:
 
     
 
-    - value :str - compound charts and line fills
+    - value :str - compound charts and line fills. Each marker text holds at most 10,000 characters. The last N marker of a series draws its type and text at each point of the series: at most 60,000 characters over all series. Each label counts 20 characters on top of its text. A character in a font larger than 14 pixels counts once per 14 pixels of font size.
     """
     return self.__clone('chm', value)
 
   
   def chls(self, value: str):
-    """line thickness and solid/dashed style
+    """line thickness and solid/dashed style. A dashed line needs at least 1 pixel per dash or space on average, and a line width at most 2 times its dash period. Dashed lines run through at most 1,000 points in total.
 
     [Reference documentation]{@link https://documentation.image-charts.com/line-charts/#line-styles}
     * @example
@@ -324,7 +324,7 @@ class ImageCharts:
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
-    - value :str - line thickness and solid/dashed style
+    - value :str - line thickness and solid/dashed style. A dashed line needs at least 1 pixel per dash or space on average, and a line width at most 2 times its dash period. Dashed lines run through at most 1,000 points in total.
     """
     return self.__clone('chls', value)
 
@@ -338,7 +338,7 @@ class ImageCharts:
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
-    - value :str - bar, pie slice, doughnut slice and polar slice chart labels
+    - value :str - bar, pie slice, doughnut slice and polar slice chart labels. Each text between pipes holds at most 10,000 characters. The texts of chtt, chdl, chl and chxl hold at most 10,000 characters together that are not printable ASCII: accented letters, other scripts, emoji and line breaks. A QR code or a Graphviz chart reads chl as its data, without these limits. A Graphviz chart has its own limits on the DOT source: at most 50,000 characters and 6 levels of braces, 200 nodes and 400 edges. These engines take fewer: neato 70 nodes and 200 edges, twopi 70 nodes and 200 edges, osage 75 nodes and 200 edges, fdp 60 nodes and 200 edges, circo 55 nodes and 110 edges. These graph attributes take a plain decimal number: mclimit from 0 to 5; maxiter from 0 to 1,000; normalize from -100,000,000,000 to 100,000,000,000 (or true, false, yes, no); esep at least 0; dpi at least 0; resolution at least 0. A PNG of more than 16,000,000 pixels, a graph that draws more than 20,000 characters of text, or a line of more than 500 characters is refused: request the SVG output with `chof=.svg` to lift these three.
     """
     return self.__clone('chl', value)
 
@@ -385,14 +385,14 @@ class ImageCharts:
 
   
   def chf(self, value: str):
-    """Background Fills
+    """Background Fills. At most 100 gradient stops over all fills.
 
     [Reference documentation]{@link https://documentation.image-charts.com/reference/background-fill/}
     * @example
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     @default '{param.default}'
 
-    - value :str - Background Fills
+    - value :str - Background Fills. At most 100 gradient stops over all fills.
     """
     return self.__clone('chf', value)
 
@@ -426,7 +426,7 @@ class ImageCharts:
 
   
   def chli(self, value: str):
-    """doughnut chart inside label
+    """doughnut chart inside label. The inside label holds at most 3,000 characters.
 
     [Reference documentation]{@link https://documentation.image-charts.com/pie-charts/#inside-label}
     * @example
@@ -434,7 +434,7 @@ class ImageCharts:
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
-    - value :str - doughnut chart inside label
+    - value :str - doughnut chart inside label. The inside label holds at most 3,000 characters.
     """
     return self.__clone('chli', value)
 
