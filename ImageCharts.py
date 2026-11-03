@@ -274,7 +274,7 @@ class ImageCharts:
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
-    - value :str - Custom string axis labels on any axis. Each text between pipes holds at most 10,000 characters. The texts of chtt, chdl, chl and chxl hold at most 10,000 characters together that are not printable ASCII: accented letters, other scripts, emoji and line breaks.
+    - value :str - Custom string axis labels on any axis. Each text between pipes holds at most 10,000 characters. The texts of chtt, chdl, chl and chxl hold at most 10,000 characters together that are not printable ASCII: accented letters, other scripts, emoji and line breaks. A radar draws a ring per label, completed with blanks up to the longest chd series minus its last value: at most 1,000 rings, and 100,000 ring corners with its spokes.
     """
     return self.__clone('chxl', value)
 
