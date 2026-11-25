@@ -440,14 +440,14 @@ class ImageCharts:
 
   
   def icac(self, value: str):
-    """image-charts enterprise `account_id`
+    """Image-Charts paid plan `account_id`
 
     [Reference documentation]{@link https://documentation.image-charts.com/enterprise/}
     * @example
   * const chart = ImageCharts().{param.name}('{doc(example)}')
     
 
-    - value :str - image-charts enterprise `account_id`
+    - value :str - Image-Charts paid plan `account_id`
     """
     return self.__clone('icac', value)
 
